@@ -4,15 +4,19 @@ import todo from '../assets/todo.svg'
 import circle from '../assets/circle.svg'
 import note from '../assets/note.svg'
 import select from '../assets/select.svg'
+import facebook from '../assets/facebook.svg'
+import twitter from '../assets/twitter.svg'
+import instagram from '../assets/instagram.svg'
 import image from '../assets/image2.jpg'
 import circleFill from '../assets/circle-fill.svg'
+import { Link } from 'react-router-dom'
 
 const Landing = () => {
     const nav =[
-        {title:"Home"},
-         {title:"About"},
-          {title:"Services"},
-          {title:"Login"}
+        {title:"Home", path:'/'},
+         {title:"About", path:'/About'},
+          {title:"Services", path:'/Services'},
+          {title:"Login", path:'/Login'}
         ]
 
           const aboutTodo =[
@@ -27,13 +31,22 @@ const Landing = () => {
             {title:'Keep track of meeting notes, to-do lists, or random thoughts in one place.', img:circle},
             {title:'Add personal or work-related notes and stay organized without the clutter.', img:circle},
           ]
+          const media=[
+            {title:instagram, path:'https://github.com/ashmah17/Track_it_app'},
+            {title:facebook, path:'/About'},
+             {title:twitter, path:'/Services'}
+           ]
+          
   return (
-    <div className='w-full h-[100vh] relative'>
+    <div className='w-[100%] h-[100vh] relative'>
         <div className="shadow pb-4">
             <div className="bg pt-6 relative md:h-[70vh] h-[34vh] justify-between  overflow-hidden flex flex-col">
                         <div className=" w-[50%] md:w-[30%] md:ml-3 flex justify-between p-4">
                             {nav.map((nav, index)=>(
+                            <Link to={nav.path}>
                                 <ul key={index} className='text-gray-400 md:text-xl hover:text-white transition-all duration-300 text-[.8rem] cursor-pointer'>{nav.title}</ul>
+
+                            </Link>
                             ))}
                         </div>
                         <div className='p-5 w-full md:w-[50%] mb-[2.8rem]  flex md:justify-left  flex-col justify-left '>
@@ -46,8 +59,9 @@ const Landing = () => {
                                 harum ipsam laudantium, magnam libero dicta excepturi                             
                                 soluta similique sequi sed impedit, vitae minus?                              
                             </p>
-                            <button className="p-2 text-[white]  hover:shadow-2xl shadow-xl transition-all duration-300 mt-4 bg-[#6f856c;] w-full rounded-xl ">Sign In</button>
-            
+                            <Link to='/Login'>
+                                <button className="p-2 text-[white]  hover:shadow-2xl shadow-xl transition-all duration-300 mt-4 bg-[#6f856c;] w-full rounded-xl ">Sign In</button>
+                            </Link>
                         </div>
 
 
@@ -67,7 +81,7 @@ const Landing = () => {
         </div>  
 
         <div className="">
-
+                            {/* ABOUT US */}
             <div className=" p-4 mt-8">
                  <h1 className="text-2xl font-primaryBold text-gray-500">About Us</h1>
                  <p className='p-2 font-primaryRegular text-gray-600'>Stay organized and boost your productivity with our
@@ -79,32 +93,32 @@ const Landing = () => {
             </div>
             
             <div className="md:flex justify-between z-30">
-                <div className="mb-[2rem] shadow-xl rounded-xl bg-white border md:w-full h-[40vh]  m-3 flex justify-between">
+                <div className="mb-[2rem] shadow-xl rounded-xl bg-white border md:w-full m-3 md:flex justify-between">
                   
-                   <div className="p-4">
+                   <div className="p-4 w-[80%]">
                         <h1 className="text-xl font-primaryBold text-gray-500 text-center mb-2">Manage your to-dos</h1>
                        {aboutTodo.map((todo)=>(
                         <span className='flex ml-8'>
                              <img src={todo.img} alt="" className="w-[1rem]" />
-                             <h1 className="p-2 text-[.9rem] text-primaryRegular text-gray-600">{todo.title}</h1>
+                             <h1 className="p-2 text-[.8rem] text-primaryRegular text-gray-600">{todo.title}</h1>
                          </span>
                        ))
                        }
 
                    </div>
 
-                  <div className=" m-4 flex items-center">
-                     <img src={todo} alt="" className="w-full" />
+                  <div className="w-[50%] m-4 flex items-center">
+                     <img src={todo} alt="" className="" />
                   </div>
                 </div>
 
-                <div className="mb-[2rem] shadow-xl rounded-xl bg-white border md:w-full h-[40vh]  m-3 flex justify-between">
+                <div className="mb-[2rem] shadow-xl rounded-xl bg-white border md:w-full m-3 md:flex  justify-between">
                    <div className="p-4">
                         <h1 className="text-xl mb-2 font-primaryBold text-gray-500 text-center">Manage your Notes</h1>
                        {aboutNote.map((todo)=>(
                         <span className='flex ml-8'>
                              <img src={todo.img} alt="" className="w-[1rem]" />
-                             <h1 className="p-2 text-[.9rem] text-primaryRegular text-gray-600">{todo.title}</h1>
+                             <h1 className="p-1 text-[.9rem] text-primaryRegular text-gray-600">{todo.title}</h1>
                          </span>
                        ))
                        }
@@ -134,7 +148,7 @@ const Landing = () => {
             </div>
             
         </div> 
-        <div className="bg3 h-[70vh] w-full relative">
+        <div className="bg3 h-[74%] w-full relative">
             <div className=" b3 w-full h-[5rem] p-3">
                 <h1 className="text-center p-2 text-gray-200 md:text-4xl text-4xl">Track <span className='text-gray-400'>it</span></h1>
             </div>
@@ -143,21 +157,33 @@ const Landing = () => {
                 <div className="bg3 w-full rotate-[10deg] top-[-7rem] absolute right-[-2rem] h-[8rem]" ></div>
                 <div className="bg3 w-full rotate-[170deg] top-[-7rem] absolute right-[3rem] h-[8rem]" ></div>
                 <div className="bg3 w-full rotate-[180deg] top-[-6rem] absolute right-[3rem] h-[8rem]" ></div>
-                <div className="bg3 w-full rotate-[350deg] bottom-[-27rem] left-[-6rem] absolute h-[29rem]" ></div>
-                <div className="bg3 w-full rotate-[110deg] bottom-[-31.8rem] right-[-17rem] absolute h-[29rem]" ></div>
-       
+               
             
             </div>
             <div className="z-40 absolute top-[3rem] w-full">
-                
-                <div className=" flex flex-col  p-4">
-                    <input type="text" className=" p-2 m-2 bg4 rounded text-white outline-none" />
-                    <input type="text" className=" p-2 m-2 bg4 rounded text-white outline-none" />
-                    <input type="text" className=" p-2 m-2 bg4 rounded text-white outline-none" />
-                    <input type="text" className=" p-2 m-2 bg4 rounded text-white outline-none" />
-                    <button className=""></button>
-                </div>
+                <h1 className="text-2xl ml-4 mt-6 text-gray-300 font-primaryRegular">Contact Us</h1>
+               <div className="">
+                    <div className=" flex flex-col  p-4 ">
+                        <h1 className=" text-gray-300 m-2">Get in touch and let us know how we can help you!</h1>
+                        <input type="text" placeholder='Name' className=" p-2 m-2 bg4 rounded text-white outline-none" />
+                        <input type="text" placeholder='Email' className=" p-2 m-2 bg4 rounded text-white outline-none" />
+                        <input type="text" placeholder='Phone' className=" p-2 m-2 bg4 rounded text-white outline-none" />
+                        <input type="text" placeholder='Message' className=" p-2 m-2 bg4 rounded text-white outline-none" />
+                        <button className="p-2 bg-gray-300 m-2 rounded">Submit</button>
+                    </div>
+                    <div className=" flex  m-4 mt-9 justify-between p-3">
+                       {media.map((media)=>(
+                       <Link to={media.path}>
+                             <img src={media.title} alt="" className="w-10" />
+                       </Link>
+                       ))}
+                    </div>
+
+               </div>
             </div>
+            <span className=" absolute bottom-0  text-gray-600  text-center w-full justify-center bg-gray-200 mt-4 p-2 flex">
+                &copy;Daada copyright Reserved
+            </span>
 
         </div>
     </div>
